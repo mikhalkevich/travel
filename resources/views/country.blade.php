@@ -1,12 +1,9 @@
 @extends('layouts.app')
-@section('styles')
+@push('styles')
 <link href="{{asset('public/css/table.css')}}" rel="stylesheet" />
 <link href="{{asset('css/table.css')}}" rel="stylesheet" />
-
-    @parent
-@endsection
-@section('scripts')
-    @parent
+@endpush
+@push('scripts')
     <script src="{{asset('plugins/datamaps/d3.min.js')}}"></script>
     <script src="{{asset('plugins/datamaps/topojson.min.js')}}"></script>
     <script src="{{asset('plugins/datamaps/dist/datamaps.world.min.js')}}"></script>
@@ -17,14 +14,14 @@
         });
         map.updateChoropleth({us: 'green'}, {reset: true})
     </script>
-@endsection
+@endpush
 
 @section('content')
     <div id="container"></div>
     <div class="container fly">
             <div class="col-md-10 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{$obj->name}}
+                    <div class="panel-heading">{{($lang == 'Rus')?$obj->name:$obj->english}}
                         <a href="/" class="close">&times;</a>
                     </div>
 

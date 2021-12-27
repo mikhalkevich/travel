@@ -6,6 +6,6 @@ $(document).ready(function () {
 
     $(".language").on("click", function (event) {
         var currentId = $(this).attr('id');
-        document.location.href = '?lang=' + currentId;
+        document.location.href = '/?lang=' + currentId;
     });
 });

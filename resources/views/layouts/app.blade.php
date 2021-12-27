@@ -14,9 +14,7 @@
     <!-- Styles -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-
-    @section('styles')
-    @show
+    @stack('styles')
 </head>
 <body>
 <div class="container">
@@ -40,7 +38,6 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/lang.js') }}"></script>
-@section('scripts')
-@show
+@stack('scripts')
 </body>
 </html>

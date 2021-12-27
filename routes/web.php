@@ -21,14 +21,21 @@ Auth::routes();
  Route::get('auth/token', 'AuthController@token');
  Route::get('auth/tokenid', 'AuthController@tokenId');
  Route::get('auth/me', 'AuthController@me');
+
 Route::post('ajax/news', 'AjaxController@getNews');
 Route::post('ajax/links', 'AjaxController@postLinks');
-Route::post('home/link', 'HomeController@postLink');
-Route::get('home', 'HomeController@index')->name('home');
-Route::get('cv', 'CVController@getIndex')->name('home');
+
+//user
+Route::get('home', 'HomeController@index');
+Route::get('home/events', 'HomeEventController@getIndex');
+Route::get('home/parsers', 'HomeParserController@getIndex');
+
+Route::post('home/event', 'HomeEventController@postIndex');
+Route::get('home/event/{event}/delete', 'HomeEventController@deleteEvent');
+Route::post('parser/states', 'HomeParserController@postCountryState');
+//all
 Route::get('catalog', 'LinkController@getAll');
 Route::get('chat/{id?}', 'ChatController@getIndex');
-
 Route::get('{url}', 'CountryController@getIndex')->where('url', '[A-Za-z]{2}');
 Route::get('city/{url}', 'CityController@getIndex');
 Route::get('{url}/{name}', 'CountryController@getName')->where('url', '[A-Za-z]{3}')->middleware('cookie');

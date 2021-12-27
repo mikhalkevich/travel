@@ -45,7 +45,9 @@ body {
 .navbar-right a:hover {
     border-radius: 5px;
 }
-
+.dropdown-menu > li > a.link {
+    color:#0d638f;
+}
 .logotext {
     color: #fff;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;

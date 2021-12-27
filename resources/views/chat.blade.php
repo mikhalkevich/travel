@@ -2,8 +2,7 @@
 @section('meta')
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
 @endsection
-@section('scripts')
-    @parent
+@push('scripts')
     <script src="{{asset('js/socket.io.js')}}"></script>
     <script>
         $(document).ready(function () {
@@ -41,7 +40,7 @@
             console.log(str);
         }
     </script>
-@endsection
+@endpush
 @section('content')
     <div id="container"></div>
     <div class="container fly">

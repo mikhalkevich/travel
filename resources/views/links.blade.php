@@ -4,12 +4,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Catalog</div>
+                    <div class="panel-heading">{{__('messages.catalog')}}</div>
                     <div class="panel-body">
                         <table width="100%">
                             <tr>
-                                <th>Название</th>
-                                <th>Ссылка</th>
+                                <th>{{__('messages.name')}}</th>
+                                <th>{{__('messages.link')}}</th>
                             </tr>
                         @foreach($links as $link)
                             <tr>

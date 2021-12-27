@@ -21,7 +21,6 @@ class CountryController extends Controller
 
     public function getIndex($url = null)
     {
-        $obj = CountryEn::where('country_iso_code', $url)->first();
         //$cities = City::where('country_iso_code', $obj->country_iso_code)->get();
         //dd($cities);
         return view('country', compact('obj', 'cities'));

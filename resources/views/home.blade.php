@@ -1,22 +1,30 @@
 @extends('layouts.app')
+@push('styles')
+     <link href="{{asset('css/home.css')}}" rel="stylesheet" />
+@endpush
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Home</div>
+                    <div class="panel-heading">
+                        <ul class="nav navbar-nav mynav">
+                            @include('includes.home_menu')
+                        </ul>
+                        <br style="clear:both" />
+                    </div>
                     <div class="panel-body">
                         <div id="map">
                             <form method="post" action="{{asset('home/link')}}">
                                 {{ csrf_field() }}
                                 <div class="form-group row">
                                     <div class="{{($errors->has('country_id'))?'alert alert-danger':''}}" role="alert">
-                                    <label for="staticEmail" class="col-sm-2 col-form-label">Страна</label>
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">{{__('messages.country')}}</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="country_id">
                                             <option value="">Выберите страну</option>
                                             @foreach($countries as $one)
-                                                <option value="{{$one->id}}">{{$one->name}}</option>
+                                                <option value="{{$one->id}}">{{($lang == 'Rus')?$one->name:$one->english}}</option>
                                             @endforeach
                                         </select>
                                         </div>
@@ -47,7 +55,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="{{($errors->has('url'))?'alert alert-danger':''}}" role="alert">
-                                    <label for="url" class="col-sm-2 col-form-label">Ссылка</label>
+                                    <label for="url" class="col-sm-2 col-form-label">{{__('messages.link')}}</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="url" id="url">
                                     </div>

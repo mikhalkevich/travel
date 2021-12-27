@@ -4,19 +4,19 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-mama" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                                                      data-toggle="tab">Информация</a></li>
+                                                      data-toggle="tab">{{__('messages.info')}}</a></li>
             <li role="presentation"><a href="#news" id="link_news" data-alpha3="{{$obj->alpha3}}" aria-controls="profile" role="tab"
-                                       data-toggle="tab">Новости {{date('Y-m-d')}}</a></li>
+                                       data-toggle="tab">{{__('messages.news')}}</a></li>
             <li role="presentation"><a href="#cities" aria-controls="calculate" role="tab"
-                                       data-toggle="tab">Города</a></li>
+                                       data-toggle="tab">{{__('messages.cities')}}</a></li>
             <li role="presentation"><a href="#links" id="link_links" aria-controls="messages" data-country="{{$obj->id}}" role="tab"
-                                       data-toggle="tab">Ссылки</a></li>
+                                       data-toggle="tab">{{__('messages.links')}}</a></li>
             <li role="presentation"><a href="#vacancy" id="link_vacancy" aria-controls="vacancy" data-country="{{$obj->id}}" role="tab"
-                                       data-toggle="tab">Вакансии</a></li>
+                                       data-toggle="tab">{{__('messages.events')}}</a></li>
             <li role="presentation"><a href="#resume" id="link_resume" aria-controls="vacancy" data-country="{{$obj->id}}" role="tab"
-                                       data-toggle="tab">Резюме</a></li>
+                                       data-toggle="tab">{{__('messages.conferences')}}</a></li>
             <li role="presentation"><a href="#services" id="link_services" aria-controls="vacancy" data-country="{{$obj->id}}" role="tab"
-                                       data-toggle="tab">Услуги</a></li>
+                                       data-toggle="tab">{{__('messages.services')}}</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -26,7 +26,7 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <td>{{__('messages.continent')}}</td>
-                            <td>Country</td>
+                            <td>{{__('messages.country')}}</td>
                             <td>Alpha2</td>
                             <td>Alpha3</td>
                             <td>ISO</td>
@@ -39,7 +39,8 @@
                             </td>
                             <td>
                                 <a href="{{asset('country/'.$obj->country_name)}}">
-                                    {{$obj->name}} / {{$obj->english}}
+                                    {{$obj->name}} / {{$name}} <br />
+                                    {{$obj->fullname}} / {{$obj->english}}
                                 </a>
                             </td>
                             <td>{{$obj->alpha2}}</td>

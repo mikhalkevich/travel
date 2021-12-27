@@ -14,7 +14,12 @@
             <ul class="nav navbar-nav mynav">
                 <li>
                     <a href="{{asset('/catalog')}}">
-                        Catalog
+                        {{__('messages.catalog')}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{asset('/archive')}}">
+                        {{__('messages.archive')}}
                     </a>
                 </li>
                 <li class="dropdown">
@@ -26,21 +31,12 @@
                             <li><a href="{{ route('register') }}">{{__('messages.register')}}</a></li>
                             <li><a href="{{ route('login') }}">{{__('messages.login')}}</a></li>
                         @else
-                            <li>
-                                <a href="{{asset('/cv')}}">
-                                    {{__('messages.cv')}}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{asset('/home')}}">
-                                    {{__('messages.home')}}
-                                </a>
-                            </li>
+                            @include('includes.home_menu')
                             <li>
                                 @if(Auth::user()->facebook_id)
-                                    <a href="{{asset('/auth/logout')}}">Logout</a>
+                                    <a href="{{asset('/auth/logout')}}" class="link">{{__('messages.logout')}}</a>
                                 @else
-                                    <a href="{{ route('logout') }}"
+                                    <a href="{{ route('logout') }}" class="link"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         Logout

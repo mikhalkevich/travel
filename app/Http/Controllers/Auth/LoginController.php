@@ -27,7 +27,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->redirectTo = config('quickadmin.route');
+        $this->redirectTo = 'home';
         $this->middleware('guest', ['except' => 'logout']);
     }
 }

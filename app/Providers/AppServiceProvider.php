@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('*', 'App\Providers\ViewComposers\CookieComposer');
+        View::composer(['welcome', 'country', 'home', 'home_events', 'home_parser', 'templates.nav'],
+                       'App\Providers\ViewComposers\CookieComposer');
+        View::composer('includes.home_menu', 'App\Providers\ViewComposers\UrlComposer');
     }
 
     /**

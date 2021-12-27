@@ -1,8 +1,7 @@
 @extends('layouts.app')
-@section('styles')
+@push('styles')
 <link href="{{asset('css/table.css')}}" rel="stylesheet" />
-    @parent
-@endsection
+@endpush
 @section('content')
     <div id="container"></div>
     <div class="container fly">
@@ -13,7 +12,7 @@
                     </div>
 
                     <div class="panel-body">
-                        {{$city->countries->name}}    
+                        {{$city->countries->name}}
 						<!--вывод названия страны-->
                     </div>
                 </div>
