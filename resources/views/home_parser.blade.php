@@ -22,8 +22,23 @@
                                 <p>
                                     {{__('messages.cities')}}
                                     <a href="#" id="parse_countries_states">
-                                         <b>countries_states.json</b>
+                                        <b>countries_states.json</b>
                                     </a>
+                                </p>
+                                <p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{__('messages.country')}} {{__('messages.cities')}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select id="choose_contry" class="form-control">
+                                            <option>{{__('messages.country_choose')}}</option>
+                                            @foreach($countries as $country)
+                                                <option value="{{$country->id}}">{{$country->english}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 </p>
                             </div>
                             <div class="col-sm-6">

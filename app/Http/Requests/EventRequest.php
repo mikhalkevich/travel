@@ -25,9 +25,8 @@ class EventRequest extends FormRequest
     {
         return [
             'country_id' => 'required',
-            'name' => 'required',
-            'city_id' => 'required',
-            'address' => 'required',
+            'name' => 'required|max:254',
+            'address' => 'required|max:254',
             'info' => 'required'
         ];
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Storage;
 use App\Country;
 use App\Event;
 use App\EventType;
@@ -19,6 +20,11 @@ class HomeEventController extends Controller
 
     public function postIndex(EventRequest $request){
        $event = new Event;
+       $picture = null;
+       if($request->hasFile('picture1')){
+           $pic = \App::make('\App\Utils\Imag')->url($request->file('picture1'));
+           $picture = $pic;
+       }
        $event->name = $request->name;
        $event->country_id = $request->country_id;
        $event->user_id = Auth::user()->id;
@@ -26,13 +32,16 @@ class HomeEventController extends Controller
        $event->address = $request->address;
        $event->date_start = $request->date_start;
        $event->days = $request->days;
-       $event->info = $request->info;
+       $event->description = $request->info;
        $event->link = $request->link;
        $event->lang = (isset($_COOKIE['lang']))?$_COOKIE['lang']:'eng';
+       $event->picture = $picture;
        $event->save();
        return redirect()->back();
     }
     public function deleteEvent(Event $event){
+        Storage::delete('uploads/'.$event->user_id.'/'.$event->picture);
+        Storage::delete('uploads/'.$event->user_id.'/s_'.$event->picture);
         $event->delete();
         return redirect()->back();
     }

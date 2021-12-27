@@ -23,7 +23,7 @@ class CreateEventsTable extends Migration
             $table->string('lang')->nullable();
             $table->string('address')->nullable();
             $table->string('name')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('picture')->nullable();
             $table->string('date_start')->nullable();
             $table->integer('days')->nullable();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Parser\GoogleNewsParse;
 use App\Country;
+use App\City;
 use App\NewsStatus;
 use App\GoogleNews;
 use App\Link;
@@ -36,5 +37,10 @@ class AjaxController extends Controller
         }
         $pro = Link::where('country_id', $country_id)->get();
         return view('ajax.links', compact('pro'));
+    }
+    public function postCountry(){
+        $id = $_POST['id'];
+        $cities = City::where('country_id', $id)->get();
+        return view('ajax.cities', compact('cities'));
     }
 }

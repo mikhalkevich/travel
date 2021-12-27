@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('cookie');
+Route::get('/', 'BaseController@getIndex')->middleware('cookie');
 
 Auth::routes();
  Route::get('auth/login', 'AuthController@login');
@@ -24,7 +22,7 @@ Auth::routes();
 
 Route::post('ajax/news', 'AjaxController@getNews');
 Route::post('ajax/links', 'AjaxController@postLinks');
-
+Route::post('ajax/country', 'AjaxController@postCountry');
 //user
 Route::get('home', 'HomeController@index');
 Route::get('home/events', 'HomeEventController@getIndex');

@@ -9,7 +9,8 @@ use App\Country;
 class HomeParserController extends Controller
 {
     public function getIndex(){
-        return view('home_parser');
+        $countries = Country::orderBy('english')->get();
+        return view('home_parser', compact('countries'));
     }
     public function postCountryState(){
         $path = config_path() . '/countries_states.json';

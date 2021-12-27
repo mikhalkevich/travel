@@ -2,6 +2,9 @@
 @push('styles')
     <link href="{{asset('css/home.css')}}" rel="stylesheet" />
 @endpush
+@push('scripts')
+    <script src="{{asset('js/events.js')}}"></script>
+@endpush
 @section('content')
     <div class="container">
         <div class="row">
@@ -15,13 +18,13 @@
                     </div>
                     <div class="panel-body">
                         <div id="map">
-                            <form method="post" action="{{asset('home/event')}}">
+                            <form method="post" action="{{asset('home/event')}}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group row">
                                     <div class="{{($errors->has('country_id'))?'alert alert-danger':''}}" role="alert">
                                     <label for="staticEmail" class="col-sm-2 col-form-label">{{__('messages.country')}}</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="country_id">
+                                        <select class="form-control" name="country_id" id="country_id">
                                             <option value="">{{__('messages.country_choose')}}</option>
                                             @foreach($countries as $one)
                                                 <option value="{{$one->id}}">{{($lang == 'Rus')?$one->name:$one->english}}</option>
@@ -43,7 +46,7 @@
                                                     <input type="text" name="address" class="form-control" placeholder="{{__('messages.address')}}">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="city_id" class="form-control" placeholder="{{__('messages.city')}}">
+                                                    <select name="city_id" id="city_id" class="form-control" style="display: none"></select>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,6 +100,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <div class="{{($errors->has('link'))?'alert alert-danger':''}}" role="alert">
+                                        <label for="info" class="col-sm-2 col-form-label">{{__('messages.event_link')}}</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="link" class="form-control" >
+                                        </div>
+                                        @if($errors->has('link'))
+                                            {{$errors->first('link')}}
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <div class="{{($errors->has('info'))?'alert alert-danger':''}}" role="alert">
                                         <label for="info" class="col-sm-2 col-form-label">{{__('messages.event_about')}}</label>
                                         <div class="col-sm-10">
@@ -125,26 +139,34 @@
                             </form>
                             <table width="100%" class="table table-striped table-bordered">
                                 <tr>
-                                    <th width="200px">Picture</th>
-                                    <th>Event name</th>
-                                    <th>Link</th>
-                                    <th>Date start</th>
-                                    <th>Days</th>
-                                    <th>Action</th>
+                                    <th width="200px">{{__('messages.picture')}}</th>
+                                    <th>{{__('messages.event_name')}}</th>
+                                    <th>{{__('messages.event_link')}}</th>
+                                    <th>{{__('messages.date_start')}}</th>
+                                    <th>{{__('messages.days')}}</th>
+                                    <th>{{__('messages.action')}}</th>
                                 </tr>
                             @foreach($events as $event)
                                     <tr>
-                                        <td>--</td>
+                                        <td>
+                                            @if($event->picture)
+                                             <img src="{{url('/storage/uploads/'.$event->user_id.'/s_'.$event->picture)}}" />
+                                            @else
+                                            @endif
+                                        </td>
                                         <td>{{$event->name}}</td>
-                                        <td>{{$event->link}}</td>
+                                        <td>
+                                            <a href="{{$event->link}}" target="_blank">{{$event->link}}</a>
+                                        </td>
                                         <td>{{$event->date_start}}</td>
                                         <td>{{$event->days}}</td>
                                         <td>
-                                            <a href="{{asset('home/event/'.$event->id.'/delete')}}">Delete</a>
+                                            <a href="{{asset('home/event/'.$event->id.'/delete')}}">{{__('messages.delete')}}</a>
                                         </td>
                                     </tr>
                             @endforeach
                             </table>
+                            {!! $events->links() !!}
                         </div>
 
                     </div>
