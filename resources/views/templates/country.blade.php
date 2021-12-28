@@ -66,9 +66,7 @@
 
                         </tr>
                     </table>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4845114.511799304!2d23.49280518303527!3d53.633088464731756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46da2584e2ad4881%3A0xa1d181ec8c10!2z0JHQtdC70LDRgNGD0YHRjA!5e0!3m2!1sru!2sby!4v1603280923474!5m2!1sru!2sby" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
-
+                    {!! $obj->map_iframe  !!}
                     <div align="right">
                         <a href="https://google.{{$obj->alpha3}}" target="_blank">
                             Google.{{$obj->alpha3}}

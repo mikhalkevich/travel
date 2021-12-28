@@ -37,6 +37,22 @@ class HomeParserController extends Controller
 
         }
         return print_r($cities);
-
+    }
+    public function postCitiesForm(){
+        $country_id = $_POST['id'];
+        $cities = City::where('country_id', $country_id)->orderBy('name_eng')->get();
+        $country = Country::find($country_id);
+        return view('ajax.parser_cities_form', compact('cities', 'country'));
+    }
+    public function translateForCountry(){
+        foreach($_POST as $key => $value){
+            $city_id = (int)$key;
+            $city = City::find($city_id);
+            if($city){
+                $city->name_rus = $value;
+                $city->save();
+            }
+        }
+        return redirect()->back();
     }
 }
