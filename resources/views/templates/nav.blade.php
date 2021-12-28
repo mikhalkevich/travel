@@ -78,7 +78,7 @@
                                 <span id="lanNavEng">English</span> 
                             </a></li>
                         <li><a id="navRus" href="#" class="language">
-                                <img id="imgNavRus" src="{{asset('/img/flag/rus_40.jpg')}}" alt="..." class="img-thumbnail icon-small"> 
+                                <img id="imgNavRus" src="{{asset('/img/flag/rus.jpg')}}" alt="..." class="img-thumbnail icon-small"> 
                                 <span id="lanNavRus">Russia</span> 
                             </a></li>
                     </ul>

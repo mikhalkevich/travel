@@ -18,29 +18,30 @@ class AjaxController extends Controller
         } else {
             $alpha3 = 'BLR';
         }
-        $status = GoogleNews::where('alpha3', $alpha3)->where('putdate', date('Y-m-d'))->first();
-        if (empty($status)) {
-            $country = Country::where('alpha3', $alpha3)->first();
-            $obj = new GoogleNewsParse;
-            $obj->getParse($country->english, $country->alpha3);
-        } else {
+        $country = Country::where('alpha3', $alpha3)->first();
+        $obj     = new GoogleNewsParse;
+        $obj->getParse($country);
 
-        }
-        $por = GoogleNews::where('alpha3', $alpha3)->where('putdate', date('Y-m-d'))->orderBy('id','DESC')->first();
-        echo $por->body;
+        $por = GoogleNews::where('alpha3', $alpha3)->where('putdate', date('Y-m-d'))->orderBy('id', 'DESC')->first();
     }
-    public function postLinks(){
+
+    public function postLinks()
+    {
         if (isset($_POST['country_id'])) {
             $country_id = $_POST['country_id'];
         } else {
             $country_id = '21';
         }
         $pro = Link::where('country_id', $country_id)->get();
+
         return view('ajax.links', compact('pro'));
     }
-    public function postCountry(){
-        $id = $_POST['id'];
+
+    public function postCountry()
+    {
+        $id     = $_POST['id'];
         $cities = City::where('country_id', $id)->get();
+
         return view('ajax.cities', compact('cities'));
     }
 }
