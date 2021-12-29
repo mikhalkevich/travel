@@ -56,7 +56,7 @@
                                                 <img src="{{url('/img/event.webp')}}" width="200px" class="float_pic"/>
                                             @endif
                                             <div class="after_float">
-                                                <p><a href="#">{{$event->name}}</a></p>
+                                                <p><a href="{{asset('event/'.$event->id)}}">{{$event->name}}</a></p>
                                                 <p><a href="#">{{($lang=='eng')?optional($event->country)->english:optional($event->country)->name}}</a></p>
                                                 <p><a href="#">{{$event->city_id}}</a></p>
                                                 <p>{{__('messages.date_start')}}: <b>{{$event->date_start}}</b></p>

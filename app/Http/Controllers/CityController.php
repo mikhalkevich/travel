@@ -10,7 +10,7 @@ class CityController extends Controller
 {
     public function getIndex($url = null){
         //$obj = CountryEn::where('country_iso_code', $url)->first();
-        $city = City::where('name', $url)->first();
+        $city = City::where('name_eng', $url)->first();
         //dd($cities);
         return view('city',compact('city'));
     }

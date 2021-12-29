@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $countries = Country::orderBy('name')->get();
-        $links = Link::where('user_id', Auth::user()->id)->with('countries')->paginate(100);
+        $links = Link::where('user_id', Auth::user()->id)->with('countries')->orderBy('id', 'DESC')->paginate(100);
         return view('home', compact('countries', 'links'));
     }
     public function postLink(LinkRequest $r){

@@ -17,7 +17,7 @@ class CookieMiddleware
     {
         if(isset($_GET['lang'])){
             $str = ltrim($_GET['lang'], 'nav');
-            setcookie('lang', $str, time()+3600);
+            setcookie('lang', $str, time()+3600*24);
         }
         return $next($request);
     }

@@ -18,8 +18,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{asset('/archive')}}">
-                        {{__('messages.archive')}}
+                    <a href="{{asset('/events')}}">
+                        {{__('messages.events')}}
                     </a>
                 </li>
                 <li class="dropdown">

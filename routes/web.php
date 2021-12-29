@@ -23,7 +23,7 @@ Route::get('auth/me', 'AuthController@me');
 Route::post('ajax/news', 'AjaxController@getNews');
 Route::post('ajax/links', 'AjaxController@postLinks');
 Route::post('ajax/country', 'AjaxController@postCountry');
-//user
+//home
 Route::get('home', 'HomeController@index');
 Route::get('home/events', 'HomeEventController@getIndex');
 Route::get('home/parsers', 'HomeParserController@getIndex');
@@ -33,7 +33,10 @@ Route::post('/home/translate_for_country/', 'HomeParserController@translateForCo
 Route::get('home/event/{event}/delete', 'HomeEventController@deleteEvent');
 Route::post('parser/states', 'HomeParserController@postCountryState');
 Route::post('parser/cities_form', 'HomeParserController@postCitiesForm');
+
 //all
+Route::get('events', 'EventController@getIndex');
+Route::get('event/{event}', 'EventController@getOne');
 Route::get('catalog', 'LinkController@getAll');
 Route::get('chat/{id?}', 'ChatController@getIndex');
 Route::get('{url}', 'CountryController@getIndex')->where('url', '[A-Za-z]{2}');
